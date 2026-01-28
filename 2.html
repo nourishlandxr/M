@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="figmin">
+<title>2 - Clickable Layers</title>
+</head>
+<body>
+<h2>Clickable Layers</h2>
+<script>
+window.addEventListener("FigminReady", () => {
+  const Z = -2.5;
+  const layers = [
+    { name: "CANOPY", plants: "Mango, Jackfruit" },
+    { name: "SUB-CANOPY", plants: "Citrus, Avocado" },
+    { name: "SHRUB", plants: "Coffee, Guava" },
+    { name: "GROUND", plants: "Sweet Potato, Peanut" },
+    { name: "ROOT", plants: "Taro, Cassava" }
+  ];
+
+  let y = 1.4;
+
+  layers.forEach(layer => {
+    const header = figmin.createObject(figmin.ObjectType.TEXT3D, {
+      text: layer.name,
+      position: { x: 0, y: y, z: Z },
+      scale: 0.45
+    });
+
+    header.onSelect.add(() => {
+      figmin.createObject(figmin.ObjectType.TEXT3D, {
+        text: layer.plants,
+        position: { x: 0, y: y - 0.25, z: Z },
+        scale: 0.28
+      });
+    });
+
+    y -= 0.35;
+  });
+});
+</script>
+</body>
+</html>

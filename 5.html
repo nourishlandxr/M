@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="figmin">
+<title>5 - Plant Roles</title>
+</head>
+<body>
+<h2>Plant Roles</h2>
+<script>
+window.addEventListener("FigminReady", () => {
+  const roles = [
+    "🌿 Nitrogen Fixer",
+    "🛡️ Windbreak",
+    "💧 Moisture Holder",
+    "🐝 Pollinator"
+  ];
+  let y = 1.2;
+  roles.forEach(r => {
+    figmin.createObject(figmin.ObjectType.TEXT3D, {
+      text: r,
+      position: { x: 0, y: y, z: -2.6 },
+      scale: 0.3
+    });
+    y -= 0.25;
+  });
+});
+</script>
+</body>
+</html>

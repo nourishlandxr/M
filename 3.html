@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="figmin">
+<title>3 - Narration Markers</title>
+</head>
+<body>
+<h2>Narration Markers</h2>
+<script>
+window.addEventListener("FigminReady", () => {
+  const marks = [
+    "00:00 — What is a food forest",
+    "00:30 — Layers explained",
+    "01:15 — Plant roles",
+    "02:00 — XR learning"
+  ];
+  let y = 1.3;
+  marks.forEach(m => {
+    figmin.createObject(figmin.ObjectType.TEXT3D, {
+      text: m,
+      position: { x: 0, y: y, z: -2.5 },
+      scale: 0.28
+    });
+    y -= 0.22;
+  });
+});
+</script>
+</body>
+</html>
