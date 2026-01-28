@@ -4,28 +4,121 @@
   <meta charset="UTF-8">
   <title>Nourish Land XR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
+    :root{
+      --bg:#0e1a14;
+      --panel:#14251c;
+      --text:#eaf4ec;
+      --muted:#9fb6aa;
+      --accent:#6fbf8e;
+    }
+
+    *{box-sizing:border-box}
+
     body{
       margin:0;
-      font-family:system-ui, sans-serif;
-      background:#0e1a14;
-      color:#eaf4ec;
+      min-height:100vh;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:radial-gradient(circle at top, #14251c, var(--bg));
+      color:var(--text);
       display:flex;
       align-items:center;
       justify-content:center;
-      height:100vh;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:520px;
+      padding:32px;
+    }
+
+    h1{
+      margin:0 0 8px;
+      font-size:1.8rem;
+      letter-spacing:.3px;
+    }
+
+    .sub{
+      color:var(--muted);
+      margin-bottom:24px;
+      font-size:.95rem;
+    }
+
+    .menu{
+      display:grid;
+      gap:12px;
+    }
+
+    a.scene{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:16px 18px;
+      background:var(--panel);
+      border-radius:14px;
+      text-decoration:none;
+      color:var(--text);
+      font-size:1rem;
+      border:1px solid rgba(255,255,255,.06);
+      transition:.18s ease;
+    }
+
+    a.scene:hover{
+      border-color:var(--accent);
+      transform:translateY(-1px);
+    }
+
+    .num{
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    footer{
+      margin-top:26px;
+      font-size:.8rem;
+      color:var(--muted);
       text-align:center;
     }
   </style>
 </head>
+
 <body>
 
-  <div>
+  <!-- WEB MENU (visible) -->
+  <div class="wrap" id="menu">
     <h1>Nourish Land XR</h1>
-    <p>Web preview active.</p>
-    <p>This scene runs inside Figmin XR.</p>
+    <div class="sub">
+      Web preview · Select a scene  
+      <br>XR scenes open inside Figmin
+    </div>
+
+    <div class="menu">
+      <a class="scene" href="1.html"><span>Food Forest Layers</span><span class="num">01</span></a>
+      <a class="scene" href="2.html"><span>Canopy & Sub-Canopy</span><span class="num">02</span></a>
+      <a class="scene" href="3.html"><span>Roots & Rhizomes</span><span class="num">03</span></a>
+      <a class="scene" href="4.html"><span>Plant Guilds</span><span class="num">04</span></a>
+      <a class="scene" href="5.html"><span>Succession & Time</span><span class="num">05</span></a>
+      <a class="scene" href="6.html"><span>Interactive Garden</span><span class="num">06</span></a>
+    </div>
+
+    <footer>
+      Open this page inside Figmin XR for immersive mode
+    </footer>
   </div>
+
+  <!-- FIGMIN SAFETY GUARD -->
+  <script>
+    if (window.Figmin) {
+      // optional: hide menu inside Figmin
+      document.getElementById("menu").style.display = "none";
+
+      window.addEventListener("FigminReady", () => {
+        // Optional: build a Figmin-native menu later
+        console.log("Figmin XR ready");
+      });
+    }
+  </script>
 
 </body>
 </html>
-
