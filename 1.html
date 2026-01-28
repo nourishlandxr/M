@@ -1,20 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="figmin">
-<title>1 - Index Test</title>
+  <meta charset="UTF-8">
+  <meta name="figmin">
+  <title>1 – Index Test</title>
 </head>
-<body>
-<h2>Index loaded</h2>
-<script>
-window.addEventListener("FigminReady", () => {
-  figmin.createObject(figmin.ObjectType.TEXT3D, {
-    text: "FIGMIN XR READY ✅",
-    position: { x: 0, y: 1.5, z: -2 },
-    scale: 0.4
-  });
-});
-</script>
+
+<body style="margin:0; background:#111; color:#eee; font-family:system-ui;">
+
+  <!-- Web fallback -->
+  <h2 id="fallback" style="padding:20px;">
+    Web preview active.<br>
+    Open this page inside Figmin XR.
+  </h2>
+
+  <script>
+    window.addEventListener("FigminReady", async () => {
+
+      // remove web fallback in XR
+      const fb = document.getElementById("fallback");
+      if (fb) fb.remove();
+
+      // create spatial text
+      await Figmin.createObject({
+        type: "text",
+        text: "FIGMIN XR READY ✅",
+        position: [0, 1.5, -2],
+        scale: 0.4,
+        color: "#eaf4ec"
+      });
+
+    });
+  </script>
+
 </body>
 </html>
